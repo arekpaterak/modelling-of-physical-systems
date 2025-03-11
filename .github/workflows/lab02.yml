@@ -13,6 +13,6 @@ jobs:
       - name: Generate a report for a lab01
         run: python -m nbconvert --to pdf lab01/1_1.ipynb
       - name: Publish the generated report
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
           path: lab01/1_1.ipynb
