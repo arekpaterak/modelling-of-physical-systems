@@ -7,7 +7,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Install python packages
-        run: pip install pint matplotlib scipy
+        run: pip install pint matplotlib scipy ipykernel
       - name: Install nbconvert
         run: pip install nbconvert
       - name: Install Pandoc, LaTeX, Inkscape
