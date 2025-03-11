@@ -1,0 +1,17 @@
+name: Manual workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      lab:
+        description: 'The lab to generate a report for'
+        required: true
+        type: string
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send greeting
+      run: echo "Hello ${{ inputs.lab }}"
