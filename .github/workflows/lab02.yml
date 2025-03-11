@@ -1,10 +1,10 @@
 name: lab02
 on: push
 jobs:
-  test:
+  generate-report:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v5
       - run: echo "Generating a report for a lab02"
       - run: pip install nbconvert
-      - run: jupyter nbconvert --to pdf  lab01/1_1.ipynb
-      
+      - run: python -m nbconvert --to pdf lab01/1_1.ipynb
