@@ -4,7 +4,7 @@ jobs:
   generate-report:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - run: echo "Generating a report for a lab02"
       - run: pip install nbconvert
       - run: python -m nbconvert --to pdf lab01/1_1.ipynb
