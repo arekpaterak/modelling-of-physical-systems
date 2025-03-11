@@ -6,11 +6,13 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Install python packages
+        run: pip install pint matplotlib scipy
       - name: Install nbconvert
         run: pip install nbconvert
       - name: Install Pandoc, LaTeX, Inkscape
         run: sudo apt-get install pandoc texlive-xetex inkscape
-      - name: Execute the notebook and generate a report
+      - name: Execute the notebook and generate a PDF report
         run: python -m nbconvert --to pdf --execute lab01/1_1.ipynb 
       - name: Publish the generated report
         uses: actions/upload-artifact@v4
