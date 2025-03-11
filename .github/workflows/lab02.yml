@@ -8,5 +8,5 @@ jobs:
         uses: actions/checkout@v4
       - run: echo "Generating a report for a lab02"
       - run: pip install nbconvert
-      - run: sudo apt-get install pandoc
+      - run: sudo apt-get install pandoc texlive-xetex
       - run: python -m nbconvert --to pdf lab01/1_1.ipynb
