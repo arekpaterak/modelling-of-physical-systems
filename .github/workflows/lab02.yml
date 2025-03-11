@@ -6,7 +6,13 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "Generating a report for a lab02"
-      - run: pip install nbconvert
-      - run: sudo apt-get install pandoc texlive-xetex
-      - run: python -m nbconvert --to pdf lab01/1_1.ipynb
+      - name: Install nbconvert
+        run: pip install nbconvert
+      - name: Install Pandoc and XeLaTeX
+        run: sudo apt-get install pandoc texlive-xetex
+      - name: Generate a report for a lab01
+        run: python -m nbconvert --to pdf lab01/1_1.ipynb
+      - name: Publish the generated report
+        uses: actions/upload-artifact@v5
+        with:
+          path: lab01/1_1.ipynb
