@@ -1,1 +1,2 @@
-# modelling-of-physical-systems
+# Modelling of Physical Systems
+A course at AGH University of Kraków.
