@@ -1,6 +1,7 @@
 name: "Lab 02: Assignment Generation"
-# on: workflow_dispatch
-on: push
+on: 
+  push:
+  workflow_dispatch:
 jobs:
   generate-report:
     runs-on: ubuntu-latest
@@ -28,7 +29,7 @@ jobs:
         run: sudo apt-get install pandoc texlive-xetex inkscape
 
       - name: Execute the notebook and generate a PDF report
-        run: python -m nbconvert --to pdf --execute lab_02/plot_from_lecture.ipynb --TagRemovePreprocessor.remove_input_tags="exclude"
+        run: python -m nbconvert --to pdf --execute lab_02/plot_from_lecture.ipynb --TagRemovePreprocessor.remove_input_tags="exclude" --PDFExporter.metadata='{"author":"Arkadiusz Paterak"}'
 
       - name: Publish the generated report
         uses: actions/upload-artifact@v4
