@@ -1,4 +1,4 @@
-name: lab_01
+name: "Lab 02: First demo workflow"
 on: push
 jobs:
   generate-report:
