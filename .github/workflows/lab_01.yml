@@ -1,4 +1,4 @@
-name: lab02
+name: lab_01
 on: push
 jobs:
   generate-report:
@@ -13,8 +13,8 @@ jobs:
       - name: Install Pandoc, LaTeX, Inkscape
         run: sudo apt-get install pandoc texlive-xetex inkscape
       - name: Execute the notebook and generate a PDF report
-        run: python -m nbconvert --to pdf --execute lab01/1_1.ipynb 
+        run: python -m nbconvert --to pdf --execute lab_01/pint_and_boiling_point.ipynb 
       - name: Publish the generated report
         uses: actions/upload-artifact@v4
         with:
-          path: lab01/1_1.pdf
+          path: lab_01/pint_and_boiling_point.pdf

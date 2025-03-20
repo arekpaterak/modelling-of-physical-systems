@@ -1,0 +1,36 @@
+name: "Lab 02: Assignment Generation"
+# on: workflow_dispatch
+on: push
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install python packages
+        run: pip install pint matplotlib scipy ipykernel nbconvert
+
+      - name: Install Pandoc, LaTeX, Inkscape
+        run: sudo apt-get install pandoc texlive-xetex inkscape
+
+      - name: Execute the notebook and generate a PDF report
+        run: python -m nbconvert --to pdf --execute lab_02/plot_from_lecture.ipynb --TagRemovePreprocessor.remove_input_tags="exclude"
+
+      - name: Publish the generated report
+        uses: actions/upload-artifact@v4
+        with:
+          path: lab_02/plot_from_lecture.pdf
