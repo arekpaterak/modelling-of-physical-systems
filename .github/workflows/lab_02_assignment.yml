@@ -29,7 +29,7 @@ jobs:
         run: sudo apt-get install pandoc texlive-xetex inkscape
 
       - name: Execute the notebook and generate a PDF report
-        run: python -m nbconvert --to pdf --execute lab_02/plot_from_lecture.ipynb --TagRemovePreprocessor.remove_input_tags="exclude" --template lab_02/template.tplx
+        run: python -m nbconvert --to pdf --execute lab_02/plot_from_lecture.ipynb --TagRemovePreprocessor.remove_input_tags="exclude"
 
       - name: Publish the generated report
         uses: actions/upload-artifact@v4
