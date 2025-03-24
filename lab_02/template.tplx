@@ -1,0 +1,10 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{Lab 02: Assignment}
+\author{Arkadiusz Paterak}
+\date{\today}
+
+\begin{document}
+\maketitle
