@@ -1,4 +1,4 @@
-Create a Jupyter notebook reproducing the c(x,t) analytic solution plot from from Lecture 1 slide 13.
+Create a Jupyter notebook reproducing the c(x,t) analytic solution plot from Lecture 1 slide 13.
 
 Use pint and matplotlib in a way that units consistent with the lecture plot are automatically labelled on the graph. Pick constant values to match the axes ranges and shape.
 The final pdf must include your full name. I expect the picked parameters to be individually chosen.
