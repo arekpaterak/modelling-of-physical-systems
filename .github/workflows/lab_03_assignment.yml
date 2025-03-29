@@ -23,7 +23,7 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install python packages
-        run: pip install pint matplotlib scipy ipykernel nbconvert open-atmos-jupyter-utils
+        run: pip install pint matplotlib scipy ipykernel nbconvert open-atmos-jupyter-utils pandas seaborn
 
       - name: Install Pandoc, LaTeX, Inkscape
         run: sudo apt-get install pandoc texlive-xetex inkscape
