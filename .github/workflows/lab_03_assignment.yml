@@ -23,13 +23,12 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install python packages
-        run: pip install pint matplotlib scipy ipykernel nbconvert open-atmos-jupyter-utils pandas seaborn
-
-      - name: Update apt-get
-        run: sudo apt-get update
+        run: pip install -r requirements.txt
 
       - name: Install Pandoc, LaTeX, Inkscape
-        run: sudo apt-get install pandoc texlive-xetex inkscape
+        run: |
+          sudo apt-get update
+          sudo apt-get install pandoc texlive-xetex inkscape
 
       - name: Execute the notebook and generate a PDF report
         run: python -m nbconvert --to pdf --execute lab_03/assignment.ipynb --TagRemovePreprocessor.remove_input_tags="exclude"

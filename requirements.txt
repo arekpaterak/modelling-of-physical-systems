@@ -1,0 +1,8 @@
+pint 
+matplotlib 
+scipy 
+ipykernel 
+nbconvert 
+open-atmos-jupyter-utils 
+pandas 
+seaborn
