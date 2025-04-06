@@ -34,7 +34,7 @@ jobs:
 
       - name: Edit notebook metadata
         run: |
-          python scripts/edit_metadata.py ${{ env.LAB }}/assignment.ipynb \
+          python scripts/add_title_and_authors_to_nb_metadata.py ${{ env.LAB }}/assignment.ipynb \
             --title "Lab 04: Assignment" \
             --author "Arkadiusz Paterak" \
             --affiliation "AGH University of Krakow"

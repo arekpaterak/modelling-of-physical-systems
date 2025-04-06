@@ -14,11 +14,12 @@ if __name__ == "__main__":
         nb = nbformat.read(f, as_version=4)
 
     nb.metadata["title"] = args.title
+
     author = {"name": args.author}
     if args.affiliation:
         author["affiliation"] = args.affiliation
-    
     nb.metadata["authors"] = [author]
+    
     nb.metadata.setdefault("tags", []).extend(["auto-generated"])
 
     with open(args.notebook_path, "w", encoding="utf-8") as f:
