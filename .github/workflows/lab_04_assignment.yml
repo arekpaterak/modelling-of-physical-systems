@@ -36,8 +36,7 @@ jobs:
         run: |
           python scripts/add_title_and_authors_to_nb_metadata.py ${{ env.LAB }}/assignment.ipynb \
             --title "Lab 04: Assignment" \
-            --author "Arkadiusz Paterak" \
-            --affiliation "AGH University of Krakow"
+            --author "Arkadiusz Paterak"
 
       - name: Execute the notebook and generate a PDF report
         run: python -m nbconvert --to pdf --execute ${{ env.LAB }}/assignment.ipynb --TagRemovePreprocessor.remove_input_tags="exclude"

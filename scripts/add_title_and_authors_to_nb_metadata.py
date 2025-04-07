@@ -6,7 +6,7 @@ if __name__ == "__main__":
     parser.add_argument("notebook_path", help="Path to the .ipynb file")
     parser.add_argument("--title", required=True, help="Title of the notebook")
     parser.add_argument("--author", required=True, help="Author of the notebook")
-    parser.add_argument("--affiliation", required=False, help="Affiliation of the author")
+    # parser.add_argument("--affiliation", required=False, help="Affiliation of the author")
 
     args = parser.parse_args()
 
@@ -16,8 +16,8 @@ if __name__ == "__main__":
     nb.metadata["title"] = args.title
 
     author = {"name": args.author}
-    if args.affiliation:
-        author["affiliation"] = args.affiliation
+    # if args.affiliation:
+    #     author["affiliation"] = args.affiliation
     nb.metadata["authors"] = [author]
     
     nb.metadata.setdefault("tags", []).extend(["auto-generated"])
