@@ -1,0 +1,52 @@
+name: "Lab 06: Assignment Generation"
+on: 
+  push:
+  workflow_dispatch:
+env:
+  LAB: lab_06
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install python packages
+        run: pip install -r requirements.txt
+
+      - name: Install Pandoc, LaTeX, Inkscape
+        run: |
+          sudo apt-get update
+          sudo apt-get install pandoc texlive-xetex inkscape
+
+      - name: Edit notebook metadata
+        run: |
+          python scripts/add_title_and_authors_to_nb_metadata.py ${{ env.LAB }}/assignment.ipynb \
+            --title "Lab 04: Assignment" \
+            --author "Arkadiusz Paterak"
+
+      - name: Lint notebook with nbqa pylint
+        run: |
+          nbqa pylint ${{ env.LAB }}/assignment.ipynb
+
+      - name: Execute the notebook and generate a PDF report
+        run: python -m nbconvert --to pdf --execute ${{ env.LAB }}/assignment.ipynb --TagRemovePreprocessor.remove_input_tags="exclude"
+
+      - name: Publish the generated report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.LAB }}_report.pdf
+          path: ${{ env.LAB }}/assignment.pdf

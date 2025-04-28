@@ -6,3 +6,4 @@ nbconvert
 open-atmos-jupyter-utils 
 pandas 
 seaborn
+nbqa[toolchain]
