@@ -1,5 +1,5 @@
 Extend the SDM coagulation solver to multi-threaded operation (CPU or GPU).
-Automate tests checking if results on one thread are bit-wise identical with
+Automate tests checking if results on one thread are bit-wise identical
 with results obtained on multiple threads, and check match with analytic solution.
 
 - 33% for implementing multi-threading
